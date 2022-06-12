@@ -1,0 +1,9 @@
+.footer {
+  /* position: absolute; */
+  list-style: none !important;
+  align-items: center;
+  height: 50px;
+  background: black;
+  margin-top: 580px;
+  /* top: 0; */
+}

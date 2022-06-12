@@ -1,23 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import { Dialog, Footer, Header } from "./components";
+import DataContext from "./contexts/dataContext";
 
 function App() {
+  const [center, setCenter] = useState(false);
+  const [lower, setLower] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const handleCenter = () => {
+    setCenter(true);
+    setLower(false);
+  };
+
+  const handleLower = () => {
+    setLower(true);
+    setCenter(false);
+  };
+
+  const reset = () => {
+    setCenter(false);
+    setLower(false);
+  };
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      setVisible(true);
+    }
+    if (event.key === "Escape") {
+      setVisible(false);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" tabIndex="0" onKeyDown={handleKeyPress}>
+      <DataContext.Provider
+        value={{
+          center: center,
+          lower: lower,
+          handleCenter: handleCenter,
+          handleLower: handleLower,
+          reset: reset,
+          visible: visible,
+        }}
+      >
+        <Header />
+        <Dialog />
+      </DataContext.Provider>
+      <Footer />
     </div>
   );
 }
