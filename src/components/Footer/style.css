@@ -1,9 +1,11 @@
 .footer {
   /* position: absolute; */
+  z-index: 100;
   list-style: none !important;
   align-items: center;
   height: 50px;
   background: black;
   margin-top: 580px;
+  position: relative;
   /* top: 0; */
 }

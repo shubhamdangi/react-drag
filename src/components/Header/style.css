@@ -5,6 +5,8 @@
   justify-content: space-evenly;
   height: 50px;
   background: black;
+  position: relative;
+  z-index: 100;
 }
 
 .btn {

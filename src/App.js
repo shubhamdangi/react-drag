@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./App.css";
-import { Dialog, Footer, Header } from "./components";
+import { Dialog, Footer, Header, Second } from "./components";
 import DataContext from "./contexts/dataContext";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   const [center, setCenter] = useState(false);
@@ -45,7 +46,12 @@ function App() {
         <Header />
         <Dialog />
       </DataContext.Provider>
-      <Footer />
+      <Router>
+        <Routes>
+          <Route exact path="/second" element={<Second />} />
+        </Routes>
+        <Footer />
+      </Router>
     </div>
   );
 }
